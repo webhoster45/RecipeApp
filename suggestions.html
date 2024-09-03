@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #FFD172;
+    }
+
+    h2 {}
+
+    .recipeContainer {
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+      font-size: 1rem;
+      background: #FFECC4;
+    }
+  </style>
+  <title>Suggestions</title>
+</head>
+
+<body>
+  <h2>Suggestions: </h2>
+  
+  <!-- Placeholder for displaying the randomly selected recipe -->
+  <div id="we" class="recipeContainer"></div>
+
+  <script>
+    const recipe1 = {
+      name: "Vegetarian Tacos",
+      recipe: [
+        "- Corn tortillas: 4",
+        "- Black beans: 1 cup, cooked",
+        "- Corn: ½ cup, cooked",
+        "- Avocado: 1, sliced",
+        "- Tomato: 1, diced",
+        "- Red onion: ¼, diced",
+        "- Cilantro: 2 tbsp, chopped",
+        "- Lime: 1, quartered",
+        "- Salsa: ¼ cup",
+        "- Sour cream: ¼ cup"
+      ],
+      instruction: [
+        "1. Warm the corn tortillas in a pan over medium heat until soft.",
+        "2. Fill each tortilla with a spoonful of black beans and corn.",
+        "3. Add avocado slices, diced tomato, and red onion to each taco.",
+        "4. Top with a sprinkle of cilantro.",
+        "5. Serve with lime wedges, salsa, and sour cream on the side."
+      ]
+    };
+
+    const recipe2 = {
+      name: "Pancakes",
+      recipe: [
+        "- All-purpose flour: 1 cup",
+        "- Baking powder: 1 tsp",
+        "- Sugar: 1 tbsp",
+        "- Salt: 1 tsp",
+        "- Milk: ¾ cup",
+        "- Egg: 1, beaten",
+        "- Butter: 2 tbsp melted",
+        "- Maple syrup: for serving"
+      ],
+      instruction: [
+        "1. In a large bowl, mix together the flour, baking powder, sugar, and salt.",
+        "2. In another bowl, whisk together the milk, egg, and melted butter.",
+        "3. Pour the wet ingredients into the dry ingredients and stir until just combined. Do not overmix.",
+        "4. Pour batter onto the griddle, using about ¼ cup for each pancake. Cook until bubbles form on the surface, then flip and cook until golden brown on the other side.",
+        "5. Serve hot with maple syrup."
+      ]
+    };
+
+    const recipe3 = {
+      name: "Spaghetti Aglio e Olio",
+      recipe: [
+        "- Spaghetti: 200g",
+        "- Garlic: 4 cloves, sliced",
+        "- Olive oil: ¼ cup",
+        "- Red pepper flakes: ½ tsp",
+        "- Parsley: 2 tbsp, chopped",
+        "- Parmesan cheese: for serving",
+        "- Salt: to taste",
+        "- Black pepper: to taste"
+      ],
+      instruction: [
+        "1. Cook the spaghetti in salted boiling water according to package instructions.",
+        "2. In a large pan, heat the olive oil over medium heat.",
+        "3. Add the sliced garlic and red pepper flakes. Cook until the garlic is golden brown.",
+        "4. Drain the spaghetti and add it to the pan with the garlic and oil. Toss well to coat.",
+        "5. Add chopped parsley and season with salt and black pepper to taste.",
+        "6. Serve with grated Parmesan cheese."
+      ]
+    };
+
+    const recipe4 = {
+      name: "Chicken Stir-Fry",
+      recipe: [
+        "- Chicken breast: 1, sliced",
+        "- Soy sauce: 3 tbsp",
+        "- Honey: 2 tbsp",
+        "- Garlic: 2 cloves, minced",
+        "- Ginger: 1 tsp, grated",
+        "- Bell pepper: 1, sliced",
+        "- Broccoli: 1 cup, florets",
+        "- Carrot: 1, julienned",
+        "- Sesame oil: 1 tbsp",
+        "- Rice: for serving"
+      ],
+      instruction: [
+        "1. In a bowl, mix soy sauce, honey, garlic, and ginger. Add the chicken slices and marinate for 15 minutes.",
+        "2. Heat sesame oil in a large pan over medium heat.",
+        "3. Add the chicken to the pan and cook until browned and cooked through.",
+        "4. Add the bell pepper, broccoli, and carrot. Stir-fry until the vegetables are tender-crisp.",
+        "5. Serve over cooked rice."
+      ]
+    };
+
+    const recipe5 = {
+      name: "Caprese Salad",
+      recipe: [
+        "- Tomatoes: 2, sliced",
+        "- Fresh mozzarella: 1 ball, sliced",
+        "- Fresh basil: a handful",
+        "- Balsamic glaze: 2 tbsp",
+        "- Olive oil: 2 tbsp",
+        "- Salt: to taste",
+        "- Black pepper: to taste"
+      ],
+      instruction: [
+        "1. Arrange alternating slices of tomato and fresh mozzarella on a serving plate.",
+        "2. Tuck fresh basil leaves between the tomato and mozzarella slices.",
+        "3. Drizzle with olive oil and balsamic glaze.",
+        "4. Season with salt and black pepper to taste.",
+        "5. Serve immediately."
+      ]
+    };
+
+    const recipe6 = {
+      name: "Chocolate Chip Cookies",
+      recipe: [
+        "- All-purpose flour: 1½ cups",
+        "- Baking soda: ½ tsp",
+        "- Salt: ½ tsp",
+        "- Unsalted butter: ½ cup, softened",
+        "- Brown sugar: ½ cup",
+        "- Granulated sugar: ¼ cup",
+        "- Vanilla extract: 1 tsp",
+        "- Egg: 1 large",
+        "- Chocolate chips: 1 cup"
+      ],
+      instruction: [
+        "1. Preheat the oven to 350°F (175°C).",
+        "2. In a bowl, whisk together the flour, baking soda, and salt.",
+        "3. In another bowl, beat the butter, brown sugar, and granulated sugar until creamy.",
+        "4. Add the egg and vanilla extract, and beat until well combined.",
+        "5. Gradually add the dry ingredients to the wet ingredients and mix until just combined.",
+        "6. Fold in the chocolate chips.",
+        "7. Drop rounded tablespoons of dough onto a baking sheet.",
+        "8. Bake for 10-12 minutes, or until the edges are golden brown.",
+        "9. Let the cookies cool on the baking sheet for a few minutes before transferring to a wire rack to cool completely."
+      ]
+    };
+
+    let array = [recipe1, recipe2, recipe3, recipe4, recipe5, recipe6];
+
+    // Correct random selection logic
+    let why = array[Math.floor(Math.random() * array.length)];
+
+    console.log(why);
+    console.log(recipe1);
+    console.log(array);
+
+    let we = document.getElementById('we');
+    
+    // Format the recipe content as HTML
+    let recipeContent = `<h3>${why.name}</h3>
+      <h4>Ingredients:</h4>
+      <p>${why.recipe.join("<br>")}</p>
+      <h4>Instructions:</h4>
+      <p>${why.instruction.join("<br>")}</p>`;
+
+    // Set the formatted content
+    we.innerHTML = recipeContent;
+    we.classList.add("recipeContainer");
+  </script>
+</body>
+
+</html>

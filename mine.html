@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary Page</title>
+   <style>
+     body {
+    font-family: Arial, sans-serif;
+    background: #FFCA5D;
+}
+
+textarea {
+    border: none;
+    background: rgb(233, 229, 229);
+    border-radius: 10px;
+    font-size: 2rem;
+    width: 80%; /* Adjusts to the container's width */
+    padding: 10px;
+    box-sizing: border-box; /* Includes padding in the width calculation */
+    overflow: hidden; /* Prevents scrollbars */
+    resize: none; /* Disables manual resizing */
+}
+
+button {
+    background-color: #007bff; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Vertical and horizontal padding */
+    font-size: 1.2rem; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    margin-top: 10px; /* Space between textarea and button */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darken button on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Write your own recipes</h3>
+        <textarea id="userinput" rows="1"></textarea>
+        <button id="savebutton">Save</button>
+    </div>
+
+    <script>
+        // Get the diary number from the page's file name
+        const diaryNumberMatch = window.location.pathname.match(/diary(\d+)/);
+        const diaryNumber = diaryNumberMatch ? diaryNumberMatch[1] : 'default';
+        const saveButton = document.getElementById("savebutton");
+        const userInput = document.getElementById("userinput");
+
+        // Function to adjust the height of the textarea
+        const adjustHeight = () => {
+            userInput.style.height = 'auto'; // Reset height to calculate new height
+            userInput.style.height = userInput.scrollHeight + 'px'; // Set new height
+        };
+
+        // Save button event listener
+        saveButton.addEventListener('click', () => {
+            const userInputValue = userInput.value;
+            // Use a unique key for each diary page
+            localStorage.setItem(`diary${diaryNumber}`, userInputValue);
+        });
+
+        // Load stored input from localStorage on page load
+        window.onload = () => {
+            const storedInput = localStorage.getItem(`diary${diaryNumber}`);
+            if (storedInput !== null) {
+                userInput.value = storedInput; // Restore the input value
+                adjustHeight(); // Adjust the height based on the restored value
+            }
+        };
+
+        // Adjust height as user types
+        userInput.addEventListener('input', adjustHeight);
+    </script>
+</body>
+</html>
